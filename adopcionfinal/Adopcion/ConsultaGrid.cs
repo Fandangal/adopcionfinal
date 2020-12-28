@@ -44,7 +44,7 @@ namespace Adopcion
                         join Adoptante in adopcion.TAdoptante on Solicitudes.IdAdoptante equals Adoptante.IdAdoptante
                         join Mascota in adopcion.TMascota on Solicitudes.IdMascota equals Mascota.IdMascota
                         where Solicitudes.Estado.ToString() == "Aprobado"
-                        select new { Solicitudes.IdSolicitud, Mascota = Mascota.Nombre, Adoptante = Adoptante.Nombre + ' ' + Adoptante.Apellido, Solicitudes.Estado };
+                        select new { Solicitudes.IdSolicitud, Mascota = Mascota.Nombre, Adoptante = Adoptante.Nombre + ' ' + Adoptante.Apellido,Telefono=Adoptante.nroCelular, Solicitudes.Estado };
             return query;
         }
 
