@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.625, 8.75" name="AdopcionBD">
+  <DataContextMoniker Name="/AdopcionBDDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d7811311-7842-41de-83bb-b97da15d48d4" absoluteBounds="3.5, 2.5, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/AdopcionBDDataContext/TAdministrador" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8fda58ef-2d05-4d90-bf85-c88a0bb32c11" absoluteBounds="3.515, 2.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3afe543a-fc39-444a-abf0-f8df110b6903" absoluteBounds="3.625, 5.625, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/AdopcionBDDataContext/TAdoptante" />
+      <nestedChildShapes>
+        <elementListCompartment Id="96a939bf-0f02-4780-a061-1cba9c85769a" absoluteBounds="3.64, 6.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d1d4c834-d0e6-48c5-8ee3-38ccf5d9aeb3" absoluteBounds="9.375, 1.375, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/AdopcionBDDataContext/TMascota" />
+      <nestedChildShapes>
+        <elementListCompartment Id="792d97c4-e589-4f68-a8bb-41efd0cc2493" absoluteBounds="9.39, 1.8350000000000009, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="83a7fc74-dc40-4c8c-8dec-779f96002948" absoluteBounds="0.75, 0.75, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/AdopcionBDDataContext/Torganizacion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2e1581b0-823b-4e88-a6a8-459ee307ff17" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f5a3a57d-fa62-4b1b-b3ba-3fe971a96b03" absoluteBounds="6.375, 6, 2, 2.3478011067708326">
+      <DataClassMoniker Name="/AdopcionBDDataContext/TSolicitud" />
+      <nestedChildShapes>
+        <elementListCompartment Id="34fe9168-63b1-4c0d-98a1-bda3c5cd6955" absoluteBounds="6.39, 6.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="18b65599-3c3a-4dc5-8d23-cf610aebe07e" absoluteBounds="0.75, 4.125, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/AdopcionBDDataContext/TUsuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a175ed79-6936-4ce0-8250-6faff1358a40" absoluteBounds="0.765, 4.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.6249995); (4.5 : 1.6249995); (4.5 : 2.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AdopcionBDDataContext/Torganizacion/Torganizacion_TAdministrador" />
+      <nodes>
+        <classShapeMoniker Id="83a7fc74-dc40-4c8c-8dec-779f96002948" />
+        <classShapeMoniker Id="d7811311-7842-41de-83bb-b97da15d48d4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.625 : 7.17390055338542); (6.375 : 7.17390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdopcionBDDataContext/TAdoptante/TAdoptante_TSolicitud" />
+      <nodes>
+        <classShapeMoniker Id="3afe543a-fc39-444a-abf0-f8df110b6903" />
+        <classShapeMoniker Id="f5a3a57d-fa62-4b1b-b3ba-3fe971a96b03" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.375 : 4.10740397135417); (10.375 : 7.17390055338542); (8.375 : 7.17390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdopcionBDDataContext/TMascota/TMascota_TSolicitud" />
+      <nodes>
+        <classShapeMoniker Id="d1d4c834-d0e6-48c5-8ee3-38ccf5d9aeb3" />
+        <classShapeMoniker Id="f5a3a57d-fa62-4b1b-b3ba-3fe971a96b03" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.15624725); (7.375 : 1.15624725); (7.375 : 6)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdopcionBDDataContext/Torganizacion/Torganizacion_TSolicitud" />
+      <nodes>
+        <classShapeMoniker Id="83a7fc74-dc40-4c8c-8dec-779f96002948" />
+        <classShapeMoniker Id="f5a3a57d-fa62-4b1b-b3ba-3fe971a96b03" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.58255126953125); (3.5 : 4.58255126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AdopcionBDDataContext/TUsuario/TUsuario_TAdministrador" />
+      <nodes>
+        <classShapeMoniker Id="18b65599-3c3a-4dc5-8d23-cf610aebe07e" />
+        <classShapeMoniker Id="d7811311-7842-41de-83bb-b97da15d48d4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.21079752604167); (5.59375 : 5.21079752604167); (5.59375 : 5.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdopcionBDDataContext/TUsuario/TUsuario_TAdoptante" />
+      <nodes>
+        <classShapeMoniker Id="18b65599-3c3a-4dc5-8d23-cf610aebe07e" />
+        <classShapeMoniker Id="3afe543a-fc39-444a-abf0-f8df110b6903" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

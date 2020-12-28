@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDAdopcion" Class="AdopcionBDDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=BILLIE\SQLEXPRESS2012;Initial Catalog=BDAdopcion;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BDAdopcionConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TAdministrador" Member="TAdministrador">
+    <Type Name="TAdministrador">
+      <Column Name="IdAdministrador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nroCelular" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="TipoDocumento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nroDocumento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IdOrganizacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Torganizacion_TAdministrador" Member="Torganizacion" ThisKey="IdOrganizacion" OtherKey="IdOrganizacion" Type="Torganizacion" IsForeignKey="true" />
+      <Association Name="TUsuario_TAdministrador" Member="TUsuario" ThisKey="Usuario" OtherKey="Usuario" Type="TUsuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAdoptante" Member="TAdoptante">
+    <Type Name="TAdoptante">
+      <Column Name="IdAdoptante" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Fecha_Nacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TipoDocumento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nroDocumento" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nroCelular" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Estado_civil" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ocupacion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TAdoptante_TSolicitud" Member="TSolicitud" ThisKey="IdAdoptante" OtherKey="IdAdoptante" Type="TSolicitud" />
+      <Association Name="TUsuario_TAdoptante" Member="TUsuario" ThisKey="Usuario" OtherKey="Usuario" Type="TUsuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TMascota" Member="TMascota">
+    <Type Name="TMascota">
+      <Column Name="IdMascota" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Raza" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TipoMascota" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tamaño" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FechaNacAprox" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="TMascota_TSolicitud" Member="TSolicitud" ThisKey="IdMascota" OtherKey="IdMascota" Type="TSolicitud" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Torganizacion" Member="Torganizacion">
+    <Type Name="Torganizacion">
+      <Column Name="IdOrganizacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DireccionUBI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Localidad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nroContacto" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CorreoElectronico" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Torganizacion_TAdministrador" Member="TAdministrador" ThisKey="IdOrganizacion" OtherKey="IdOrganizacion" Type="TAdministrador" />
+      <Association Name="Torganizacion_TSolicitud" Member="TSolicitud" ThisKey="IdOrganizacion" OtherKey="IdOrganizacion" Type="TSolicitud" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TSolicitud" Member="TSolicitud">
+    <Type Name="TSolicitud">
+      <Column Name="IdSolicitud" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdOrganizacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdMascota" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codigo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FechaSolicitud" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="TAdoptante_TSolicitud" Member="TAdoptante" ThisKey="IdAdoptante" OtherKey="IdAdoptante" Type="TAdoptante" IsForeignKey="true" />
+      <Association Name="TMascota_TSolicitud" Member="TMascota" ThisKey="IdMascota" OtherKey="IdMascota" Type="TMascota" IsForeignKey="true" />
+      <Association Name="Torganizacion_TSolicitud" Member="Torganizacion" ThisKey="IdOrganizacion" OtherKey="IdOrganizacion" Type="Torganizacion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TUsuario" Member="TUsuario">
+    <Type Name="TUsuario">
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Contrasena" Type="System.Data.Linq.Binary" DbType="VarBinary(200)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="TUsuario_TAdministrador" Member="TAdministrador" ThisKey="Usuario" OtherKey="Usuario" Type="TAdministrador" />
+      <Association Name="TUsuario_TAdoptante" Member="TAdoptante" ThisKey="Usuario" OtherKey="Usuario" Type="TAdoptante" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spActualizarMascota" Method="spActualizarMascota">
+    <Parameter Name="IdMascota" Parameter="idMascota" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Raza" Parameter="raza" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TipoMascota" Parameter="tipoMascota" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Imagen" Parameter="imagen" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tamaño" Parameter="tamaño" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FechaNacAprox" Parameter="fechaNacAprox" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spActualizarMascotaResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(33) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spActualizarOrganizacion" Method="spActualizarOrganizacion">
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DireccionUBI" Parameter="direccionUBI" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Localidad" Parameter="localidad" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nroContacto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CorreoElectronico" Parameter="correoElectronico" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spActualizarOrganizacionResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(38) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spActualizarProducto" Method="spActualizarProducto">
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Fecha_Nacimiento" Parameter="fecha_Nacimiento" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="TipoDocuemnto" Parameter="tipoDocuemnto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NroDocumento" Parameter="nroDocumento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nroCelular" Type="System.String" DbType="VarChar(9)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Estado_civil" Parameter="estado_civil" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Ocupacion" Parameter="ocupacion" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spActualizarProductoResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(36) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spAgregarAdministrador" Method="spAgregarAdministrador">
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NroCelular" Parameter="nroCelular" Type="System.String" DbType="VarChar(9)" />
+    <Parameter Name="TipoDocumento" Parameter="tipoDocumento" Type="System.String" DbType="VarChar(8)" />
+    <Parameter Name="nroDocumento" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="idOrganizacion" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="Contrasena" Parameter="contrasena" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="spAgregarAdministradorResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(22) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spAgregarAdoptante" Method="spAgregarAdoptante">
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Fecha_Nacimiento" Parameter="fecha_Nacimiento" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="TipoDocuemnto" Parameter="tipoDocuemnto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nroDocumento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nroCelular" Type="System.String" DbType="VarChar(9)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Estado_civil" Parameter="estado_civil" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Ocupacion" Parameter="ocupacion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contrasena" Parameter="contrasena" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="spAgregarAdoptanteResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(33) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spAgregarMascota" Method="spAgregarMascota">
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Raza" Parameter="raza" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TipoMascota" Parameter="tipoMascota" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Imagen" Parameter="imagen" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Tamaño" Parameter="tamaño" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FechaNacAprox" Parameter="fechaNacAprox" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="spAgregarMascotaResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spAgregarOrganizacion" Method="spAgregarOrganizacion">
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DireccionUBI" Parameter="direccionUBI" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Localidad" Parameter="localidad" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nroContacto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CorreoElectronico" Parameter="correoElectronico" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spAgregarOrganizacionResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(36) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spAgregarSolicitud" Method="spAgregarSolicitud">
+    <Parameter Name="IdOrganizacion" Parameter="idOrganizacion" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="IdMascota" Parameter="idMascota" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="IdAdoptante" Parameter="idAdoptante" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FechaSolicitud" Parameter="fechaSolicitud" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(200)" />
+    <ElementType Name="spAgregarSolicitudResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spCambiarEstadoSolicitud" Method="spCambiarEstadoSolicitud">
+    <Parameter Name="IdSolicitud" Parameter="idSolicitud" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="NuevoEstado" Parameter="nuevoEstado" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spCambiarEstadoSolicitudResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spEditarAdministrador" Method="spEditarAdministrador">
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="TipoDocumento" Parameter="tipoDocumento" Type="System.String" DbType="VarChar(8)" />
+    <Parameter Name="NroCelular" Parameter="nroCelular" Type="System.String" DbType="VarChar(9)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spEditarAdministradorResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(28) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spEliminarAdministrador" Method="spEliminarAdministrador">
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spEliminarAdministradorResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(37) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spEliminarAdoptante" Method="spEliminarAdoptante">
+    <Parameter Name="IdAdoptante" Parameter="idAdoptante" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spEliminarAdoptanteResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(33) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spEliminarMascota" Method="spEliminarMascota">
+    <Parameter Name="IdMascota" Parameter="idMascota" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spEliminarMascotaResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spEliminarOrganizacion" Method="spEliminarOrganizacion">
+    <Parameter Name="correo" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spEliminarOrganizacionResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(36) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarAdministrador" Method="spListarAdministrador">
+    <ElementType Name="spListarAdministradorResult">
+      <Column Name="IdAdministrador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nroCelular" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="TipoDocumento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nroDocumento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IdOrganizacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarAdoptante" Method="spListarAdoptante">
+    <ElementType Name="spListarAdoptanteResult">
+      <Column Name="IdAdoptante" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Fecha_Nacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TipoDocumento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nroDocumento" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nroCelular" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Estado_civil" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ocupacion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spLoginUsuario" Method="spLoginUsuario">
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contrasena" Parameter="contrasena" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spLoginUsuarioResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
